@@ -27,8 +27,8 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         InputEmail =findViewById(R.id.signup_email);
         InputPassword=findViewById(R.id.entredpassword);
-        Email=new EditText(InputEmail.getContext());
-        Password=new EditText(InputPassword.getContext());
+        Email=InputEmail.getEditText();
+        Password=InputPassword.getEditText();
 
         Login=findViewById(R.id.login);
         Signup=findViewById(R.id.signup);
@@ -40,7 +40,6 @@ public class Login extends AppCompatActivity {
 
                 String email = Email.getText().toString();
                 String password=Password.getText().toString();
-                System.out.println(email);
                 if(email.equals("") || password.equals("")){
 
                     Toast.makeText(Login.this, "Please enter "+email+" all the fields", Toast.LENGTH_SHORT).show();

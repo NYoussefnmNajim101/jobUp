@@ -34,11 +34,11 @@ public class SignUp extends AppCompatActivity {
         InputRe_Password=findViewById(R.id.re_password);
         Register=findViewById(R.id.register);
         //Extract EditText
-        FirstName=new EditText(InputFirstName.getContext());
-        LastName=new EditText(InputLastName.getContext());
-        Email=new EditText(InputEmail.getContext());
-        Password=new EditText(InputPassword.getContext());
-        Re_Password=new EditText(InputRe_Password.getContext());
+        FirstName=InputFirstName.getEditText();
+        LastName=InputLastName.getEditText();
+        Email=InputEmail.getEditText();
+        Password=InputPassword.getEditText();
+        Re_Password=InputRe_Password.getEditText();
 
 
 
@@ -54,31 +54,40 @@ public class SignUp extends AppCompatActivity {
                 String password=Password.getText().toString();
                 String re_password=Re_Password.getText().toString();
 
+                if(Firstname.equals("") || Lastname.equals("")|| email.equals("") || password.equals("") || re_password.equals("")){
 
-                Boolean ConfirmPassword=password.equals(re_password);
+                    Toast.makeText(SignUp.this, "Please enter  all the fields", Toast.LENGTH_SHORT).show();
+                } else{
+                    Boolean ConfirmPassword=password.equals(re_password);
+                    if(ConfirmPassword){
+                        Boolean checkSignUp=DB.InsertUser(fullname,email,password);
+                        if(checkSignUp){
 
-                if(ConfirmPassword){
-                    Boolean checkSignUp=DB.InsertUser(fullname,email,password);
-                    if(checkSignUp){
+                            Toast.makeText(SignUp.this,"New User Added",Toast.LENGTH_LONG).show();
+                            Intent intent=new Intent(getApplicationContext(), Login.class);
+                            startActivity(intent);
 
-                        Toast.makeText(SignUp.this,"New User Added",Toast.LENGTH_LONG).show();
+                        }
+                        else {
+                            Toast.makeText(SignUp.this,"Something Goes Wrong",Toast.LENGTH_LONG).show();
+
+                        }
+
+                    }else {
+
+
+                        Toast.makeText(SignUp.this,"Passwords doesn't match",Toast.LENGTH_LONG).show();
+                        
                     }
-                    else {
-                        Toast.makeText(SignUp.this,"Something Goes Wrong",Toast.LENGTH_LONG).show();
-
-                    }
-
-                }else {
 
 
-                    Toast.makeText(SignUp.this,"Passwords doesn't match",Toast.LENGTH_LONG).show();
+
 
                 }
 
 
 
-                Intent intent=new Intent(getApplicationContext(), Login.class);
-                startActivity(intent);
+
 
 
 
