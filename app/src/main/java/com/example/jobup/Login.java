@@ -40,9 +40,10 @@ public class Login extends AppCompatActivity {
 
                 String email = Email.getText().toString();
                 String password=Password.getText().toString();
+                System.out.println(email);
                 if(email.equals("") || password.equals("")){
 
-                    Toast.makeText(Login.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Please enter "+email+" all the fields", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     Boolean UserExist =DB.CheckUserExistence(email);
