@@ -33,6 +33,7 @@ public class Login extends AppCompatActivity {
         Login=findViewById(R.id.login);
         Signup=findViewById(R.id.signup);
         DB=new DBhelper(this);
+        DB.InsertAdmin("admin@gmail.com","admin");
 
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +51,15 @@ public class Login extends AppCompatActivity {
 
                         Boolean ConfirmPassword =DB.CheckPassword(email,password);
                         if (ConfirmPassword ==true){
-                            Toast.makeText(Login.this, "User registered", Toast.LENGTH_SHORT).show();
+                            if(email.equals("admin@gmail.com") && password.equals("admin")){
+                                Intent intent=new Intent(getApplicationContext(), ManageOffers.class);
+                                startActivity(intent);
+
+                            }else {
+                                Toast.makeText(Login.this, "User registered", Toast.LENGTH_SHORT).show();
+                            }
+
+
                         }else {
                             Toast.makeText(Login.this, "Invalid Password", Toast.LENGTH_SHORT).show();
                         }
