@@ -57,7 +57,7 @@ public class Login extends AppCompatActivity {
                             }else {
                                 Toast.makeText(Login.this, "User Logged succesfully", Toast.LENGTH_SHORT).show();
 
-                                Intent myIntent = new Intent(Login.this, NavActivity.class);
+                                Intent myIntent = new Intent(Login.this, HomeActivity.class);
                                 String data = DB.getUserInfo(email);
                                 //String userEmail = DB.getUserInfo(email,2);
                                 myIntent.putExtra("name", data);
