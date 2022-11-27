@@ -25,12 +25,13 @@ public class SignUp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_signup);
 
         InputFirstName=findViewById(R.id.firstname);
         InputLastName=findViewById(R.id.lastname);
         InputEmail=findViewById(R.id.signup_email);
-        InputPassword=findViewById(R.id.signup_password);
+        InputPassword=findViewById(R.id.password);
         InputRe_Password=findViewById(R.id.re_password);
         Register=findViewById(R.id.register);
         //Extract EditText
@@ -77,7 +78,7 @@ public class SignUp extends AppCompatActivity {
 
 
                         Toast.makeText(SignUp.this,"Passwords doesn't match",Toast.LENGTH_LONG).show();
-                        
+
                     }
 
 

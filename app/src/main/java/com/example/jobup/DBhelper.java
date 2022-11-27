@@ -8,9 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 
 public class DBhelper extends SQLiteOpenHelper {
-
+    Cursor cursor = null;
     public DBhelper( Context context) {
-        super(context, "Users.db", null, 1);
+        super(context, "AppDB.db", null, 1);
     }
 
 
@@ -18,13 +18,48 @@ public class DBhelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("create table user (Id INTEGER PRIMARY KEY ,FullName varchr(255),Email varchar(255),Password varchar(255))");
+        db.execSQL("create table user (Id INTEGER PRIMARY KEY ,FullName varchar(255),Email varchar(255),Password varchar(255))");
+        db.execSQL("create table offer (Id INTEGER PRIMARY KEY ,title varchar(500),email varchar(255),phone varchar(50),description varchar(1000) )");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+
+
+    public Boolean InsertOffer(String title,String email,String phone,String description ){
+
+        SQLiteDatabase DB=this.getWritableDatabase();
+        ContentValues contentValues=new ContentValues();
+        contentValues.put("title",title);
+        contentValues.put("email",email);
+        contentValues.put("phone",phone);
+        contentValues.put("description",description);
+        long res=DB.insert("offer",null,contentValues);
+        if(res==-1) {
+            return false;}
+
+        else {return true;}
+
+    }
+
+    public Boolean InsertAdmin(String email,String Password){
+
+        SQLiteDatabase DB=this.getWritableDatabase();
+        ContentValues contentValues=new ContentValues();
+        contentValues.put("fullname","");
+        contentValues.put("email",email);
+        contentValues.put("Password",Password);
+        long res=DB.insert("user",null,contentValues);
+        if(res==-1) {
+            return false;}
+
+        else {return true;}
+
+    }
+
+
 
 
     public Boolean InsertUser(String fullname,String email,String Password){
@@ -63,6 +98,17 @@ public class DBhelper extends SQLiteOpenHelper {
         else return false;
 
     }
+    public Cursor getdata(){
+        String query = "select Id,title,email,phone from offer";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
+    }
+
 
 
 
