@@ -1,5 +1,6 @@
 package com.example.jobup;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -63,6 +64,40 @@ public class DBhelper extends SQLiteOpenHelper {
         else return false;
 
     }
+
+    @SuppressLint("Range")
+    public String getUserInfo(String email){
+        String data = "";
+        Cursor cursor = null;
+        SQLiteDatabase DB = this.getWritableDatabase();
+
+
+        //Cursor cursor=DB.rawQuery("select Email,Password from user where Email=?",new String[] {email});
+//        if(cursor != null) {
+//
+//            cursor.moveToFirst();
+//            data = cursor.getString(cursor.getColumnIndex("FullName"));
+//        }
+
+        try {
+            cursor = DB.rawQuery("SELECT * FROM user WHERE Email=?", new String[] {email+ ""});
+            if(cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                data= cursor.getString(cursor.getColumnIndex("FullName"));
+            }
+            return data;
+        }finally {
+            cursor.close();
+        }
+
+
+
+
+
+
+
+    }
+
 
 
 

@@ -14,7 +14,14 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="home_fragment">Home fragment</string>
     <string name="history_fragment">history fragment</string>
-    <string name="profile_fragment">Home fragment</string>
+    <string name="profile_fragment">Profile fragment</string>
+    <string name="open_nav">Opening the navigation drawer</string>
+    <string name="close_nav">closing the navigation drawer</string>
+
+    <string name="getstarted">Get Started</string>
+    <string name="welcome">Job Up</string>
+    <string name="back">back</string>
+    <string name="logo">logo</string>
 
 
 </resources>

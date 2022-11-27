@@ -50,7 +50,15 @@ public class Login extends AppCompatActivity {
 
                         Boolean ConfirmPassword =DB.CheckPassword(email,password);
                         if (ConfirmPassword ==true){
-                            Toast.makeText(Login.this, "User registered", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, "User Logged succesfully", Toast.LENGTH_SHORT).show();
+
+                            Intent myIntent = new Intent(Login.this,NavActivity.class);
+                            String data = DB.getUserInfo(email);
+                            //String userEmail = DB.getUserInfo(email,2);
+                            myIntent.putExtra("name",data);
+                            //myIntent.putExtra("userEmail",userEmail);
+                            startActivity(myIntent);
+
                         }else {
                             Toast.makeText(Login.this, "Invalid Password", Toast.LENGTH_SHORT).show();
                         }

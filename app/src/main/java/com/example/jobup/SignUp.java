@@ -49,7 +49,7 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View v) {
                 String Firstname=FirstName.getText().toString();
                 String Lastname=LastName.getText().toString();
-                String fullname=Firstname+" "+Lastname;
+                String fullname=Firstname+""+Lastname;
                 String email=Email.getText().toString();
                 String password=Password.getText().toString();
                 String re_password=Re_Password.getText().toString();
