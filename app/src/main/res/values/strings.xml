@@ -10,7 +10,7 @@
     <string name="profile">Profile</string>
     <string name="historique">History</string>
     <string name="logout">Logout</string>
-    <string name="sign_up">Signup</string>
+    <string name="sign_up">Sign Up</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="home_fragment">Home fragment</string>
     <string name="history_fragment">history fragment</string>

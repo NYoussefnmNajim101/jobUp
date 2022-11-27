@@ -17,7 +17,7 @@
         android:fontFamily="@font/anton"
         android:text="@string/sign_up"
         android:textAlignment="center"
-        android:textColor="#3F51B5"
+        android:textColor="@color/my_bleu"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +39,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:startIconDrawable="@drawable/ic_baseline_person_24"
-        app:startIconTint="#3F51B5">
+        app:startIconTint="@color/my_bleu">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -60,7 +60,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/firstname"
         app:startIconDrawable="@drawable/ic_baseline_person_24"
-        app:startIconTint="#3F51B5">
+        app:startIconTint="@color/my_bleu">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -81,7 +81,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lastname"
         app:startIconDrawable="@drawable/ic_baseline_email_24"
-        app:startIconTint="#3F51B5">
+        app:startIconTint="@color/my_bleu">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -99,12 +99,12 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
         app:endIconMode="password_toggle"
-        app:endIconTint="#3F51B5"
+        app:endIconTint="@color/my_bleu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signup_email"
         app:startIconDrawable="@drawable/ic_baseline_lock_24"
-        app:startIconTint="#3F51B5">
+        app:startIconTint="@color/my_bleu">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -122,12 +122,12 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
         app:endIconMode="password_toggle"
-        app:endIconTint="#3F51B5"
+        app:endIconTint="@color/my_bleu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signup_password"
         app:startIconDrawable="@drawable/ic_baseline_lock_24"
-        app:startIconTint="#3F51B5">
+        app:startIconTint="@color/my_bleu">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
