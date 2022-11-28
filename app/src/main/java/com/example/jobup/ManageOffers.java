@@ -1,5 +1,6 @@
 package com.example.jobup;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -47,37 +48,33 @@ public class ManageOffers extends AppCompatActivity {
         offerTitle = new ArrayList<>();
         offerEmail = new ArrayList<>();
         offerPhone = new ArrayList<>();
-        //offerDescription = new ArrayList<>();
+        offerDescription = new ArrayList<>();
         DB = new DBhelper(this);
         DisplayData();
 
-        myAdapter = new MyAdapter(this,offerId,offerTitle, offerEmail,offerPhone);
+        myAdapter = new MyAdapter(this,offerId,offerTitle, offerEmail,offerPhone,offerDescription);
         recyclerView.setAdapter(myAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
-    private void DisplayData(){
-        Cursor cursor=DB.getdata();
-        if(cursor.getCount()==0){
+    private void DisplayData() {
+        Cursor cursor = DB.getdata();
+        if (cursor.getCount() == 0) {
 
             Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
-        }else {
+        } else {
             while (cursor.moveToNext()) {
 
                 offerId.add(cursor.getString(0));
                 offerTitle.add(cursor.getString(1));
                 offerEmail.add(cursor.getString(2));
                 offerPhone.add(cursor.getString(3));
-                //offerDescription.add(cursor.getString(3));
+                offerDescription.add(cursor.getString(4));
             }
-
-
 
         }
 
-
-
-
     }
+
 
 }
 

@@ -131,7 +131,7 @@ public class DBhelper extends SQLiteOpenHelper {
 
     }
     public Cursor getdata(){
-        String query = "select Id,title,email,phone from offer";
+        String query = "select Id,title,email,phone,description from offer";
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = null;
@@ -158,6 +158,34 @@ public class DBhelper extends SQLiteOpenHelper {
         }
 
 
+    }
+
+
+    Boolean updateOffer(String id, String title, String email, String phone, String description){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("title", title);
+        contentValues.put("email", email);
+        contentValues.put("phone", phone);
+        contentValues.put("description", description);
+
+        long res = DB.update("offer", contentValues, "id=?", new String[]{id});
+        if(res == -1){
+            return false;
+        }else {
+            return true;
+        }
+
+    }
+
+    Boolean deleteOffer(String id){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        long res = DB.delete("offer", "id=?", new String[]{id});
+        if(res == -1){
+            return false;
+        }else{
+            return  true;
+        }
     }
 
 }
