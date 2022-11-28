@@ -7,6 +7,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.jobup.domain.JobOfferDomain;
+
+import java.util.ArrayList;
+
 
 public class DBhelper extends SQLiteOpenHelper {
     Cursor cursor = null;
@@ -89,6 +93,33 @@ public class DBhelper extends SQLiteOpenHelper {
 
     }
 
+    @SuppressLint("Range")
+    public ArrayList<JobOfferDomain> getAllJobOffers(){
+        ArrayList<JobOfferDomain> offers = new ArrayList<JobOfferDomain>();
+        Cursor cursor = getdata();
+
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+            while (!cursor.isLast()){
+                JobOfferDomain jobOffer = new JobOfferDomain();
+                jobOffer.setOfferTitle(cursor.getString(cursor.getColumnIndex("title")));
+                jobOffer.setOfferEmail(cursor.getString(cursor.getColumnIndex("email")));
+                jobOffer.setOfferPhone(cursor.getString(cursor.getColumnIndex("phone")));
+                jobOffer.setOfferDescription("");
+                jobOffer.setOfferId(cursor.getInt(cursor.getColumnIndex("Id")));
+
+                offers.add(jobOffer);
+                cursor.moveToNext();
+
+
+            }
+        }
+
+        System.out.println("offers : "+offers);
+        cursor.close();
+        return offers;
+
+    }
     public Boolean CheckPassword(String email, String password) {
 
         SQLiteDatabase DB = this.getWritableDatabase();
