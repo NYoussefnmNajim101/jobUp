@@ -59,9 +59,7 @@ public class Login extends AppCompatActivity {
 
                                 Intent myIntent = new Intent(Login.this, HomeActivity.class);
                                 String data = DB.getUserInfo(email);
-                                //String userEmail = DB.getUserInfo(email,2);
                                 myIntent.putExtra("name", data);
-                                //myIntent.putExtra("userEmail",userEmail);
                                 startActivity(myIntent);
                             }
 

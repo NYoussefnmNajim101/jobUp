@@ -112,8 +112,8 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="desc" />
+            android:layout_height="127dp"
+            android:hint="enter the description of the offer " />
     </com.google.android.material.textfield.TextInputLayout>
 
 

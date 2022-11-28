@@ -4,11 +4,15 @@ import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.CursorWindowAllocationException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import androidx.annotation.RequiresApi;
+
 import com.example.jobup.domain.JobOfferDomain;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -158,6 +162,17 @@ public class DBhelper extends SQLiteOpenHelper {
         }
 
 
+    }
+
+    @SuppressLint("Range")
+    public Cursor getInfo(String name) throws IOException{
+        Cursor cursor = null;
+        SQLiteDatabase DB = this.getWritableDatabase();
+        cursor = DB.rawQuery("SELECT * FROM user WHERE FullName=?", new String[]{name + ""});
+            if (cursor.getCount() > 0) {
+            return cursor;
+            }
+            else throw new IOException();
     }
 
 }

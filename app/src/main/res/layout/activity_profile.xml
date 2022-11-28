@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeActivity"
-    android:id="@+id/MainconstraintLayout"
+    android:id="@+id/profileLayout"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -13,7 +13,7 @@
 
 
     <ScrollView
-        android:id="@+id/MainScrollView"
+        android:id="@+id/profileScrollView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,9 +26,9 @@
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/HeaderSection"
+                android:id="@+id/profileHeaderSection"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="167dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
@@ -36,115 +36,45 @@
                 android:elevation="3dp">
 
                 <TextView
-                    android:id="@+id/GreetingText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginBottom="60dp"
-                    android:text="Hello"
+                    android:id="@+id/profileName"
+                    android:layout_width="154dp"
+                    android:layout_height="31dp"
+                    android:layout_marginStart="4dp"
+                    android:text="User Name"
                     android:textColor="#FF5722"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.185"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/userFullName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="userName"
-                    android:textColor="#FF5722"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/GreetingText"
-                    app:layout_constraintStart_toEndOf="@+id/GreetingText" />
-
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Apply For Jobs"
-                    android:textColor="#000000"
-                    android:textStyle="bold|italic"
-                    app:layout_constraintEnd_toEndOf="@+id/userFullName"
-                    app:layout_constraintStart_toStartOf="@+id/GreetingText"
-                    app:layout_constraintTop_toBottomOf="@+id/GreetingText" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.345" />
 
                 <ImageView
-                    android:id="@+id/PersonnaImage"
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="45dp"
+                    android:id="@+id/imageView"
+                    android:layout_width="143dp"
+                    android:layout_height="162dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.85"
+                    app:layout_constraintStart_toEndOf="@+id/profileName"
                     app:layout_constraintTop_toTopOf="parent"
-                     />
-
-                <EditText
-                    android:id="@+id/editTextTextPersonName"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="1dp"
-                    android:background="@drawable/search_background"
-                    android:drawableStart="@android:drawable/ic_menu_search"
-                    android:ems="10"
-                    android:hint="Search For a Job"
-                    android:inputType="textPersonName"
-                    android:textSize="14sp"
-                    android:textStyle="italic"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                    app:layout_constraintVertical_bias="0.372"
+                    app:srcCompat="@drawable/ic_profile" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/decorationBox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
-                    android:layout_marginBottom="16dp"
-                    android:text="Recent Job Alerts"
-                    android:textColor="#000000"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/jobOffersRecyclerView"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.138"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/jobOffersRecyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="16dp"
-                    android:paddingLeft="22dp"
-                    android:paddingRight="22dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
     </ScrollView>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
         android:layout_width="0dp"
         android:layout_height="100dp"
         android:layout_marginStart="8dp"
@@ -299,22 +229,126 @@
 
         </com.google.android.material.bottomappbar.BottomAppBar>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/SearchBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#ff5e00"
-            android:elevation="3dp"
-            android:src="@drawable/ic_historique"
-            app:backgroundTint="#ff5e00"
-            app:layout_anchor="@id/app_bar">
-
-        </com.google.android.material.floatingactionbutton.FloatingActionButton>
-
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="409dp"
+        android:layout_height="455dp"
+        app:layout_constraintBottom_toTopOf="@+id/coordinatorLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileScrollView"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/userPhone"
+            android:layout_width="102dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="28dp"
+            android:text="@string/phone"
+            app:layout_constraintEnd_toEndOf="@+id/heyo"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/heyo"
+            app:layout_constraintTop_toBottomOf="@+id/heyo" />
+
+        <TextView
+            android:id="@+id/emailHint"
+            android:layout_width="103dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="28dp"
+            android:text="@string/email"
+            app:layout_constraintEnd_toEndOf="@+id/userPhone"
+            app:layout_constraintHorizontal_bias="0.952"
+            app:layout_constraintStart_toStartOf="@+id/userPhone"
+            app:layout_constraintTop_toBottomOf="@+id/userPhone" />
+
+        <TextView
+            android:id="@+id/heyo"
+            android:layout_width="102dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:text="@string/name"
+            app:layout_constraintEnd_toStartOf="@+id/fullNameInput"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/fullNameInput"
+            android:layout_width="154dp"
+            android:layout_height="39dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/name_data"
+            app:layout_constraintBottom_toBottomOf="@+id/heyo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.347"
+            app:layout_constraintStart_toEndOf="@+id/heyo"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="156dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/phone_data"
+            app:layout_constraintBottom_toBottomOf="@+id/userPhone"
+            app:layout_constraintEnd_toEndOf="@+id/fullNameInput"
+            app:layout_constraintHorizontal_bias="0.97"
+            app:layout_constraintStart_toEndOf="@+id/userPhone"
+            app:layout_constraintTop_toBottomOf="@+id/fullNameInput"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="160dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/email_data"
+            app:layout_constraintBottom_toBottomOf="@+id/emailHint"
+            app:layout_constraintEnd_toEndOf="@+id/fullNameInput"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView12"
+            app:layout_constraintTop_toBottomOf="@+id/textView12"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="370dp"
+            android:layout_height="76dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:paddingLeft="60dp"
+            android:paddingRight="60dp"
+            android:text="@string/jobSearcher"
+            android:textColor="@color/my_bleu"
+            android:textSize="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/emailHint" />
+
+        <Button
+            android:id="@+id/profileButton"
+            android:layout_width="153dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="200dp"
+            android:layout_marginEnd="200dp"
+            android:layout_marginBottom="30dp"
+            android:text="@string/editProfile"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10"
+            app:layout_constraintVertical_bias="0.293" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-

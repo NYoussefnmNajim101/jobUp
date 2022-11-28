@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jobup.domain.JobOfferDomain;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -22,6 +23,7 @@ public class HomeActivity extends AppCompatActivity {
     private RecyclerView recyclerViewJobOffersList;
     Intent intent;
     TextView userFullName;
+    String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +59,11 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void ProfileButtonClicked(View view) {
-        Toast.makeText(HomeActivity.this, "Profile Button Clicked", Toast.LENGTH_SHORT).show();
+        dbHelper = new DBhelper(this);
+        Intent myIntent = new Intent(HomeActivity.this,ProfileActivity.class);
+        String fullName = intent.getStringExtra("name");
+        myIntent.putExtra("fullname",fullName);
+        startActivity(myIntent);
 
     }
 

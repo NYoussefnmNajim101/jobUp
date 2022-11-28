@@ -3,6 +3,7 @@ package com.example.jobup;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -50,10 +51,10 @@ public class CreateOffer extends AppCompatActivity {
                 Boolean res= DB.InsertOffer(title,email,phone,description);
 
                 if (res==true){
-
                     Toast.makeText(CreateOffer.this, "New offer Added", Toast.LENGTH_SHORT).show();
+                    Intent myIntent = new Intent(CreateOffer.this,ManageOffers.class);
+                    startActivity(myIntent);
                 }else{
-
 
                     Toast.makeText(CreateOffer.this, "Error", Toast.LENGTH_SHORT).show();
                 }
