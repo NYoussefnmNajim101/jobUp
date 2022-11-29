@@ -10,8 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JobUp">
         <activity
+            android:name=".JobDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ProfileActivity"
             android:exported="false" />
+        <activity
+            android:name=".UpdateOffer"
+            android:exported="false"
+            android:parentActivityName=".ManageOffers">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".ManageOffers"
             android:exported="false"

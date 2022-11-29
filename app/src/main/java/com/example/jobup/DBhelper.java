@@ -4,11 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.CursorWindowAllocationException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
-import androidx.annotation.RequiresApi;
 
 import com.example.jobup.domain.JobOfferDomain;
 
@@ -135,7 +132,7 @@ public class DBhelper extends SQLiteOpenHelper {
 
     }
     public Cursor getdata(){
-        String query = "select Id,title,email,phone from offer";
+        String query = "select Id,title,email,phone,description from offer";
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = null;
@@ -164,15 +161,51 @@ public class DBhelper extends SQLiteOpenHelper {
 
     }
 
+
+    Boolean updateOffer(String id, String title, String email, String phone, String description){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("title", title);
+        contentValues.put("email", email);
+        contentValues.put("phone", phone);
+        contentValues.put("description", description);
+
+        long res = DB.update("offer", contentValues, "id=?", new String[]{id});
+        if(res == -1){
+            return false;
+        }else {
+            return true;
+        }
+
+    }
+
+    Boolean deleteOffer(String id){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        long res = DB.delete("offer", "id=?", new String[]{id});
+        if(res == -1){
+            return false;
+        }else{
+            return  true;
+        }
+    }
     @SuppressLint("Range")
-    public Cursor getInfo(String name) throws IOException{
+    public Cursor getInfo(String name) throws IOException {
         Cursor cursor = null;
         SQLiteDatabase DB = this.getWritableDatabase();
         cursor = DB.rawQuery("SELECT * FROM user WHERE FullName=?", new String[]{name + ""});
-            if (cursor.getCount() > 0) {
+        if (cursor.getCount() > 0) {
             return cursor;
-            }
-            else throw new IOException();
+        }
+        else throw new IOException();
     }
 
+    public Cursor getOfferInfo(String email) throws IOException {
+        Cursor cursor = null;
+        SQLiteDatabase DB = this.getWritableDatabase();
+        cursor = DB.rawQuery("SELECT * FROM offer WHERE email=?", new String[]{email + ""});
+        if (cursor.getCount() > 0) {
+            return cursor;
+        }
+        else throw new IOException();
+    }
 }

@@ -1,6 +1,8 @@
 package com.example.jobup;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -22,8 +24,8 @@ public class HomeActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
     private RecyclerView recyclerViewJobOffersList;
     Intent intent;
+    TextView offerEmail;
     TextView userFullName;
-    String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +34,7 @@ public class HomeActivity extends AppCompatActivity {
         userFullName = findViewById(R.id.userFullName);
         userFullName.setText(intent.getStringExtra("name"));
         dbHelper = new DBhelper(this);
+
         recyclerViewJobOffers();
 
             }
@@ -64,11 +67,32 @@ public class HomeActivity extends AppCompatActivity {
         String fullName = intent.getStringExtra("name");
         myIntent.putExtra("fullname",fullName);
         startActivity(myIntent);
-
     }
 
     public void HomeButtonClicked(View view) {
         Toast.makeText(HomeActivity.this, "Home Button Clicked", Toast.LENGTH_SHORT).show();
+
+    }
+    @SuppressLint("Range")
+    public void details(View v) throws IOException {
+        offerEmail = findViewById(R.id.JobItemEmail);
+        DBhelper db = new DBhelper(this);
+        Cursor cur = db.getOfferInfo(offerEmail.getText().toString());
+        Intent myIntent = new Intent(HomeActivity.this,JobDetailsActivity.class);
+
+        if(cur.getCount()>0){
+            cur.moveToFirst();
+             String title = cur.getString(cur.getColumnIndex("title"));
+             String email = cur.getString(cur.getColumnIndex("email"));
+             String phone = cur.getString(cur.getColumnIndex("phone"));
+             String desc = cur.getString(cur.getColumnIndex("description"));
+             myIntent.putExtra("title",title);
+             myIntent.putExtra("email",email);
+             myIntent.putExtra("phone",phone);
+             myIntent.putExtra("description",desc);
+             startActivity(myIntent);
+        }
+
 
     }
 }

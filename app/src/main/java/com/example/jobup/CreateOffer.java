@@ -51,10 +51,12 @@ public class CreateOffer extends AppCompatActivity {
                 Boolean res= DB.InsertOffer(title,email,phone,description);
 
                 if (res==true){
+
                     Toast.makeText(CreateOffer.this, "New offer Added", Toast.LENGTH_SHORT).show();
                     Intent myIntent = new Intent(CreateOffer.this,ManageOffers.class);
                     startActivity(myIntent);
                 }else{
+
 
                     Toast.makeText(CreateOffer.this, "Error", Toast.LENGTH_SHORT).show();
                 }

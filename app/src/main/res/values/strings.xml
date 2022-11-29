@@ -22,17 +22,16 @@
     <string name="welcome">Job Up</string>
     <string name="back">back</string>
     <string name="logo">logo</string>
-    <string name="editProfile">Edit Profile</string>
-    <string name="jobSearcher"> Job Searcher</string>
 
-    <string name="name">NAME : </string>
+    <string name="firstName">First Name : </string>
     <string name="email">EMAIL :</string>
-    <string name="phone">PHONE :</string>
+    <string name="lastName">Last Name :</string>
 
     <string name="name_data"></string>
     <string name="email_data"></string>
-    <string name="phone_data"></string>
-
+    <string name="last_data"></string>
+    <string name="editProfile">Edit Profile</string>
+    <string name="jobSearcher"> Job Searcher</string>
 
 
 </resources>
