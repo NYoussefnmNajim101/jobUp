@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jobup.domain.JobOfferDomain;
+import com.example.jobup.domain.UserDomain;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,14 +24,17 @@ public class HomeActivity extends AppCompatActivity {
     private RecyclerView recyclerViewJobOffersList;
     Intent intent;
     TextView userFullName;
-    String email;
+    String userfullName;
+    UserDomain userObject;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.example.jobup.R.layout.activity_home);
         intent = getIntent();
+        userObject = (UserDomain) intent.getSerializableExtra("userObject");
+        userfullName = userObject.getUserFullName();
         userFullName = findViewById(R.id.userFullName);
-        userFullName.setText(intent.getStringExtra("name"));
+        userFullName.setText(userfullName);
         dbHelper = new DBhelper(this);
         recyclerViewJobOffers();
 
@@ -61,8 +65,8 @@ public class HomeActivity extends AppCompatActivity {
     public void ProfileButtonClicked(View view) {
         dbHelper = new DBhelper(this);
         Intent myIntent = new Intent(HomeActivity.this,ProfileActivity.class);
-        String fullName = intent.getStringExtra("name");
-        myIntent.putExtra("fullname",fullName);
+
+       myIntent.putExtra("userObject",userObject);
         startActivity(myIntent);
 
     }

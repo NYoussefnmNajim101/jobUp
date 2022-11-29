@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.jobup.domain.UserDomain;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class Login extends AppCompatActivity {
@@ -58,8 +59,9 @@ public class Login extends AppCompatActivity {
                                 Toast.makeText(Login.this, "User Logged succesfully", Toast.LENGTH_SHORT).show();
 
                                 Intent myIntent = new Intent(Login.this, HomeActivity.class);
-                                String data = DB.getUserInfo(email);
-                                myIntent.putExtra("name", data);
+                                UserDomain data = DB.getUserInfo(email);
+
+                                myIntent.putExtra("userObject", data);
                                 startActivity(myIntent);
                             }
 

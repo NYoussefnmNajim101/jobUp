@@ -24,6 +24,8 @@
     <string name="logo">logo</string>
     <string name="editProfile">Edit Profile</string>
     <string name="jobSearcher"> Job Searcher</string>
+    <string name="JobOffer"> Job Offer</string>
+
 
     <string name="name">NAME : </string>
     <string name="email">EMAIL :</string>
@@ -32,7 +34,6 @@
     <string name="name_data"></string>
     <string name="email_data"></string>
     <string name="phone_data"></string>
-
 
 
 </resources>

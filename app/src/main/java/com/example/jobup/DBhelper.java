@@ -11,6 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.RequiresApi;
 
 import com.example.jobup.domain.JobOfferDomain;
+import com.example.jobup.domain.UserDomain;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -109,7 +110,7 @@ public class DBhelper extends SQLiteOpenHelper {
                 jobOffer.setOfferTitle(cursor.getString(cursor.getColumnIndex("title")));
                 jobOffer.setOfferEmail(cursor.getString(cursor.getColumnIndex("email")));
                 jobOffer.setOfferPhone(cursor.getString(cursor.getColumnIndex("phone")));
-                jobOffer.setOfferDescription("");
+                jobOffer.setOfferDescription(cursor.getString(cursor.getColumnIndex("description")));
                 jobOffer.setOfferId(cursor.getInt(cursor.getColumnIndex("Id")));
 
                 offers.add(jobOffer);
@@ -135,7 +136,7 @@ public class DBhelper extends SQLiteOpenHelper {
 
     }
     public Cursor getdata(){
-        String query = "select Id,title,email,phone from offer";
+        String query = "select Id,title,email,phone,description from offer";
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = null;
@@ -145,8 +146,8 @@ public class DBhelper extends SQLiteOpenHelper {
         return cursor;
     }
     @SuppressLint("Range")
-    public String getUserInfo(String email) {
-        String data = "";
+    public UserDomain getUserInfo(String email) {
+        UserDomain data = null;
         Cursor cursor = null;
         SQLiteDatabase DB = this.getWritableDatabase();
 
@@ -154,7 +155,10 @@ public class DBhelper extends SQLiteOpenHelper {
             cursor = DB.rawQuery("SELECT * FROM user WHERE Email=?", new String[]{email + ""});
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
-                data = cursor.getString(cursor.getColumnIndex("FullName"));
+                data = new UserDomain();
+                data.setUserEmail(email);
+                data.setUserFullName(cursor.getString(cursor.getColumnIndex("FullName")));
+
             }
             return data;
         } finally {

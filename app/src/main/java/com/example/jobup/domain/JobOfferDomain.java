@@ -1,6 +1,8 @@
 package com.example.jobup.domain;
 
-public class JobOfferDomain {
+import java.io.Serializable;
+
+public class JobOfferDomain implements Serializable {
 
     private int offerId;
     private String offerTitle;

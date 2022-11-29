@@ -1,5 +1,8 @@
 package com.example.jobup;
 
+import static java.security.AccessController.getContext;
+
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +47,10 @@ public class JobOfferAdapter extends RecyclerView.Adapter<JobOfferAdapter.viewHo
             @Override
             public void onClick(View v) {
                 System.out.println("details clikced on : "+offers.get(holder.getAdapterPosition()).getOfferTitle());
+                Intent intent =new Intent(holder.itemView.getContext(),OfferDetailsActivity.class);
+                intent.putExtra("offer",offers.get(holder.getAdapterPosition()));
+                holder.itemView.getContext().startActivity(intent);
+
             }
         });
     }
